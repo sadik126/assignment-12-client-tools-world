@@ -18,9 +18,9 @@ const Header = () => {
                             <li><Link to="/login">Login</Link></li>
                         </ul>
                     </div>
-                    <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <a class="btn btn-ghost normal-case text-xl">Tools world</a>
                 </div>
-                <div class="navbar-end">
+                <div class="navbar-center hidden lg:flex navbar-end">
                     <ul class="menu menu-horizontal p-0">
                         <li><Link to="/">Home</Link></li>
 
