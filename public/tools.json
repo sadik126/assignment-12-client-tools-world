@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Intel Core i5-12400 Desktop Processor 18M Cache, up to 4.40 GHz",
+        "price": "11500",
+        "minimum": "100",
+        "available": "500",
+        "description": "Easily create, edit, and share 4K content and enjoy immersive experiences with latest Intel® Core™ i5 processors featuring built-in AI and Wi-Fi 6.",
+        "img": "https://assets2.rockpapershotgun.com/intel-core-i5-9600k.jpg/BROK/resize/1920%3E/format/jpg/quality/80/intel-core-i5-9600k.jpg"
+    },
+    {
+        "name": "MSI B560M PRO WIFI Micro ATX Motherboard Price in Bangladesh",
+        "price": "10500",
+        "minimum": "80",
+        "available": "300",
+        "description": "The MSI B560M PRO motherboard has a 2.5Gbps LAN with high bandwidth and low latency, which provides remarkable data transfer speeds faster than standard gigabit LANs",
+        "img": "https://www.bdstall.com/asset/product-image/giant_169434.jpg"
+    },
+    {
+        "name": "Ramsta 8GB DDR3 1600MHz Laptop RAM Price in Bangladesh",
+        "price": "2500",
+        "minimum": "200",
+        "available": "3000",
+        "description": "This Ramsta laptop RAM features 8GB memory capacity, DDR3 type memory, 1600MHz frequency, NON-ECC function, 1.35V working power, and heat-sink type",
+        "img": "https://www.bdstall.com/asset/product-image/giant_155326.jpg"
+    },
+    {
+        "name": "Asus GeForce GTX 1050 Ti 4GB GDDR5 Desktop Graphics Card Price in Bangladesh",
+        "price": "25000",
+        "minimum": "200",
+        "available": "1000",
+        "description": "Asus expedition GeForce GTX 1050 Ti desktop graphics card has 4GB GDDR5 memory capacity, 1392 MHz GPU boost clock speed, 1290 MHz base clock speed, 7008 MHz memory clock speed, 7680 x 4320p resolution",
+        "img": "https://www.bdstall.com/asset/product-image/giant_151586.jpg"
+    },
+    {
+        "name": "AData XPG SX6000 Pro M.2 512GB PCIe SSD Price in Bangladesh",
+        "price": "6000",
+        "minimum": "200",
+        "available": "1000",
+        "description": "This AData XPG SX6000 SSD interfaces to the host through a PCIe 3.0 x 4 link and communicates using the NVMe 1.3 protocol. It can deliver a read/write speed of up to 2100 / 1500 Mbps, and its random 4K performance can reach up to 250000 / 240000 IOPS read / write",
+        "img": "https://www.bdstall.com/asset/product-image/giant_157815.jpg"
+    },
+    {
+        "name": "X7 Gaming Mouse Price in Bangladesh",
+        "price": "600",
+        "minimum": "500",
+        "available": "1000",
+        "description": "X7 gaming mouse DPI ranges from 1600 to 5500, and it includes seven buttons: double click, forward, backward, left-click, right-click, DPI, and scroll. It provides a comfortable design with a rubber coating surface for improved grip and comfort, making it ideal for desktop PCs, laptops, and other OTG-enabled devices",
+        "img": "https://www.bdstall.com/asset/product-image/giant_155319.jpg"
+    },
+    {
+        "name": "Aula F2088 Backlight Gaming Keyboard Price in Bangladesh",
+        "price": "2600",
+        "minimum": "500",
+        "available": "1000",
+        "description": "Colorful backlight brings a great gaming atmosphere, aluminum alloy lighting rotary knob, multimedia key combination easy for working or gaming operation, plug and play connect to USB port, ABS plastic materials make hands to feel comfort, ultra thin floating keycap design",
+        "img": "https://www.bdstall.com/asset/product-image/giant_110926.jpeg"
+    }
+]
