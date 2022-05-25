@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
+import Bussiness from '../Bussiness/Bussiness';
 import Tool from '../Tools/Tool';
 
 
@@ -25,6 +26,8 @@ const Home = () => {
 
                 </div>
             </div>
+            <h2 className='text-3xl text-center uppercase font-mono mt-16'>The <span className='text-primary'>Bussiness summary</span> </h2>
+            <Bussiness></Bussiness>
         </div>
     );
 };
