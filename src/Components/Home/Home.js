@@ -28,6 +28,7 @@ const Home = () => {
             </div>
             <h2 className='text-3xl text-center uppercase font-mono mt-16'>The <span className='text-primary'>Bussiness summary</span> </h2>
             <Bussiness></Bussiness>
+
         </div>
     );
 };
