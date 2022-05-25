@@ -1,47 +1,67 @@
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
-import auth from '../../firebase.init';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import google from '../img/google.png'
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 
-const Login = () => {
-    let location = useLocation();
-
-    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    let from = location.state?.from?.pathname || "/";
-    let navigate = useNavigate();
+const Signup = () => {
     const [
-        signInWithEmailAndPassword, user, loading, error
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
-    ] = useSignInWithEmailAndPassword(auth);
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    let nevigate = useNavigate();
+
+
+
+    const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
 
     if (user) {
         console.log(user)
     }
-
     let errormessage;
 
-    if (error || gerror) {
-        errormessage = <p className='text-red-600'>{error?.message || gerror?.message}</p>
+    if (error || updateerror) {
+        errormessage = <p className='text-red-600'>{error?.message || updateerror?.message}</p>
     }
-
     const onSubmit = async data => {
+        console.log(data)
+        await createUserWithEmailAndPassword(data.email, data.password, data.name)
+        await updateProfile({ displayName: data.name });
 
-        await signInWithEmailAndPassword(data.email, data.password)
-        console.log(user)
-        navigate('/');
     };
+
     return (
         <div className='flex justify-center items-center h-screen'>
 
             <div className="card w-96 bg-base-100 shadow-xl">
 
                 <div className="card-body items-center text-center">
-                    <h2 className="text-center text-2xl font-extrabold text-white">Please Login here</h2>
+                    <h2 className="text-center text-2xl font-extrabold text-white">Please Register here</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="form-control w-full max-w-xs">
+
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+
+                            </label>
+                            <input {...register("name", {
+                                required: { value: true, message: 'name is required' }
+
+                            })} type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                            <label className="label">
+                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-600">{errors.name.message}</span>}
+
+
+
+                            </label>
+                        </div>
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
@@ -85,14 +105,14 @@ const Login = () => {
 
 
 
-                        <input className="btn btn-outline btn-primary w-full max-w-xs mt-6" type="submit" value="login" />
+                        <input className="btn btn-outline btn-glass bg-gradient-to-r from-red-700 to-yellow-500 w-full max-w-xs mt-6" type="submit" value="Sign up" />
                     </form>
 
                     {errormessage}
-                    <p>New to TOOLS WORLD?<Link to="/signup" className='text-green-600' > Create new account</Link></p>
-                    <div className="divider">OR</div>
+                    <p>Already have an account?<Link to="/login" className='text-primary' > Login here</Link></p>
 
-                    <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-success"> <img style={{ width: '30px' }} src={google} alt="" />Continue with google</button>
+
+
 
                 </div>
             </div>
@@ -101,4 +121,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;
