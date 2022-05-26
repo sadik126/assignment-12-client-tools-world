@@ -17,10 +17,11 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/purchase' element={<Purchase></Purchase>}></Route>
+        {/* <Route path='/purchase' element={<Purchase></Purchase>}></Route> */}
         <Route path='/review' element={<Review></Review>}></Route>
         <Route path='/tools' element={<Tools></Tools>}></Route>
         <Route path='/tools/:toolsID' element={<Toolsdetails></Toolsdetails>}></Route>
+        <Route path='/purchase/:toolsID' element={<Purchase></Purchase>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>

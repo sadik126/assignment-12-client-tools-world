@@ -9,6 +9,10 @@ const Tool = (props) => {
     const nevigatedetail = (id) => {
         nevigate(`/tools/${id}`)
     }
+
+    const nevigateperchase = (id) => {
+        nevigate(`/purchase/${id}`)
+    }
     return (
         <div class="card w-96 bg-base-100 shadow-xl">
             <figure class="px-10 pt-10">
@@ -24,7 +28,7 @@ const Tool = (props) => {
                 <p>Price : {price}</p>
                 <p>Minimum : {minimum}</p>
                 <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
+                    <button onClick={() => nevigateperchase(_id)} class="btn btn-primary">Buy Now</button>
                     <button onClick={() => nevigatedetail(_id)} class="btn btn-secondary">Detail</button>
                 </div>
             </div>
