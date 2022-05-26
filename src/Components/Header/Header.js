@@ -25,7 +25,7 @@ const Header = () => {
                             <li><Link to="/review">Review</Link></li>
 
                             {
-                                user ? <li><Link onClick={Handlesignout} to="/logout">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
+                                user ? <li><Link onClick={Handlesignout} to="/">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
                             }
 
                             {
@@ -53,7 +53,7 @@ const Header = () => {
                         <li><Link to="/purchase">Purchase</Link></li>
                         <li><Link to="/review">Review</Link></li>
                         {
-                            user ? <li><Link onClick={Handlesignout} className="mr-16" to="/logout">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
+                            user ? <li><Link onClick={Handlesignout} className="mr-16" to="/">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
                         }
 
                         {

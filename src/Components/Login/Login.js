@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import auth from '../../firebase.init';
 import { useForm } from 'react-hook-form';
 import google from '../img/google.png'
+import Loading from '../Loading/Loading';
 
 const Login = () => {
     let location = useLocation();
@@ -17,8 +18,12 @@ const Login = () => {
 
     ] = useSignInWithEmailAndPassword(auth);
 
-    if (user) {
-        console.log(user)
+    if (user || guser) {
+        navigate(from, { replace: true });
+    }
+
+    if (loading || gloading) {
+        return <Loading></Loading>
     }
 
     let errormessage;
