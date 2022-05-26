@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 
 const Signup = () => {
     const [
@@ -24,6 +25,11 @@ const Signup = () => {
     if (user) {
         console.log(user)
     }
+
+
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
     let errormessage;
 
     if (error || updateerror) {
@@ -33,6 +39,7 @@ const Signup = () => {
         console.log(data)
         await createUserWithEmailAndPassword(data.email, data.password, data.name)
         await updateProfile({ displayName: data.name });
+        nevigate('/')
 
     };
 

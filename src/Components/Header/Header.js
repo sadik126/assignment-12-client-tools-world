@@ -28,6 +28,19 @@ const Header = () => {
                                 user ? <li><Link onClick={Handlesignout} to="/logout">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
                             }
 
+                            {
+                                user ? <li><Link className='font-extrabold text-red-700' to="/">{user.displayName}</Link></li> : <li><Link to="/"></Link></li>
+                            }
+
+                            {
+                                user ?
+                                    <div class="avatar placeholder">
+                                        <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                            <img src={user.photoURL} width="50px" alt="" />
+                                        </div>
+                                    </div> : <li><Link to="/"></Link></li>
+                            }
+
                         </ul>
                     </div>
                     <a class="btn btn-ghost normal-case text-3xl font-bold text-red-700 font-serif">Tools world</a>
@@ -40,7 +53,20 @@ const Header = () => {
                         <li><Link to="/purchase">Purchase</Link></li>
                         <li><Link to="/review">Review</Link></li>
                         {
-                            user ? <li><Link onClick={Handlesignout} to="/logout">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
+                            user ? <li><Link onClick={Handlesignout} className="mr-16" to="/logout">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
+                        }
+
+                        {
+                            user ? <li><Link className='font-extrabold text-red-700' to="/">{user.displayName}</Link></li> : <li><Link to="/"></Link></li>
+                        }
+
+                        {
+                            user ?
+                                <div class="avatar placeholder">
+                                    <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                        <img src={user.photoURL} width="50px" alt="" />
+                                    </div>
+                                </div> : <li><Link to="/"></Link></li>
                         }
                     </ul>
                 </div>
