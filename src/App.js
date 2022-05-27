@@ -14,6 +14,7 @@ import Tools from './Components/Tools/Tools';
 import Signup from './Components/Signup/Signup';
 import Toolsdetails from './Components/Tools/Toolsdetails';
 import Requireauth from './Components/Requireauth/Requireauth';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/tools/:toolsID' element={<Toolsdetails></Toolsdetails>}></Route>
         <Route path='/purchase/:toolsID' element={<Requireauth><Purchase></Purchase></Requireauth>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='/dashboard' element={<Requireauth><Dashboard></Dashboard></Requireauth>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
       <ToastContainer />

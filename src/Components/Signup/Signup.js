@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../hooks/useToken';
 import Loading from '../Loading/Loading';
 
 const Signup = () => {
@@ -22,6 +23,8 @@ const Signup = () => {
 
     const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
 
+    const [token] = useToken(user)
+
     if (user) {
         console.log(user)
     }
@@ -39,9 +42,13 @@ const Signup = () => {
         console.log(data)
         await createUserWithEmailAndPassword(data.email, data.password, data.name)
         await updateProfile({ displayName: data.name });
-        nevigate('/')
+
 
     };
+
+    if (token) {
+        nevigate('/')
+    }
 
     return (
         <div className='flex justify-center items-center h-screen'>

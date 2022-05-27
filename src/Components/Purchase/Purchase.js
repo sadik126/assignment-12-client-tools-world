@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -22,8 +23,8 @@ const Purchase = () => {
         fetch(`http://localhost:4000/tools/${toolsID}`)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    }, [products, setProducts])
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     // const handleAmount = e => {
     //     e.preventDefault();
@@ -36,25 +37,26 @@ const Purchase = () => {
         // setAmount(data)
         // console.log(data.amount)
         // const totalamount = data.amount;
-        // fetch('http://localhost:4000/booking', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
+        await fetch('http://localhost:4000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
 
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.success) {
-        //             toast.success(`your booking is done`)
-        //         }
-        //         else {
-        //             toast.error(`please try again`)
-        //         }
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    toast.success(`your booking is done`)
+                    reset();
+                }
+                else {
+                    toast.error(`product added already`)
+                }
 
 
-        // })
+            })
 
 
 
@@ -107,9 +109,14 @@ const Purchase = () => {
                                 <span className="label-text">Product name</span>
 
                             </label>
-                            <input {...register("product")} value={products.name} type="text" placeholder="your password" className="input input-bordered w-full max-w-xs" />
+                            <input {...register("product", { required: { value: true, message: 'product is required' } })} value={products.name} type="text" placeholder="your password" className="input input-bordered w-full max-w-xs" />
 
                         </div>
+                        <label className="label">
+                            {errors.product?.type === 'required' && <span className="label-text-alt text-red-600">{errors.product.message}</span>}
+
+
+                        </label>
 
 
                         <div class="form-control">
@@ -144,10 +151,18 @@ const Purchase = () => {
                             </label>
                             <label class="input-group">
                                 <span>Price</span>
-                                <input {...register("price")} value={products.price} type="text" placeholder="10" class="input input-bordered" />
+                                <input {...register("price", { required: { value: true, message: 'price is required' } })} value={products.price} type="text" placeholder="10" class="input input-bordered" />
                                 <span>BDT</span>
                             </label>
                         </div>
+
+                        <label className="label">
+                            {errors.price?.type === 'required' && <span className="label-text-alt text-red-600">{errors.price.message}</span>}
+
+
+
+
+                        </label>
 
 
                         <div class="form-control">
@@ -155,9 +170,23 @@ const Purchase = () => {
                                 <span class="label-text">Product amount</span>
                             </label>
                             <label class="input-group">
-                                <span>Price</span>
-                                <input {...register("amount")} type="text" placeholder="enter your amount" class="input input-bordered" />
+                                <span>Amount</span>
+                                <input {...register("amount", {
+                                    required: { value: true, message: 'number is required' },
+                                    min: { value: products.minimum, message: 'icrease your number' },
+                                    max: { value: products.available, message: 'reduce your number' }
+                                })} type="number" placeholder="enter your amount" class="input input-bordered" />
 
+
+
+
+
+                            </label>
+
+                            <label className="label">
+                                {errors.amount?.type === 'required' && <span className="label-text-alt text-red-600">{errors.amount.message}</span>}
+                                {errors.amount?.type === 'min' && <span className="label-text-alt text-red-600">{errors.amount.message}</span>}
+                                {errors.amount?.type === 'max' && <span className="label-text-alt text-red-600">{errors.amount.message}</span>}
 
 
 
@@ -175,7 +204,7 @@ const Purchase = () => {
 
 
 
-                        <input className="btn btn-outline btn-primary w-full max-w-xs mt-6" type="submit" value="login" />
+                        <input disabled={errors.amount?.type === 'min' || errors.amount?.type === 'max'} className="btn btn-outline btn-primary w-full max-w-xs mt-6" type="submit" value="purchase" />
                     </form>
 
 
