@@ -22,8 +22,7 @@ const Header = () => {
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/tools">Tools</Link></li>
 
-                            <li><Link to="/purchase">Purchase</Link></li>
-                            <li><Link to="/review">Review</Link></li>
+
                             {
                                 user && <li><Link to="/dashboard">Dashboard</Link></li>
                             }
@@ -49,13 +48,15 @@ const Header = () => {
                     </div>
                     <a class="btn btn-ghost normal-case text-3xl font-bold text-red-700 font-serif">Tools world</a>
                 </div>
+                <div className="navbar-end">
+                    <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Sidebar</label>
+                </div>
                 <div class="navbar-center hidden lg:flex navbar-end">
                     <ul class="menu menu-horizontal p-0">
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/tools">Tools</Link></li>
 
-                        <li><Link to="/purchase">Purchase</Link></li>
-                        <li><Link to="/review">Review</Link></li>
+
 
                         {
                             user && <li><Link to="/dashboard">Dashboard</Link></li>

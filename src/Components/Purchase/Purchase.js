@@ -10,7 +10,7 @@ import auth from '../../firebase.init';
 const Purchase = () => {
     const { toolsID } = useParams();
     const [user] = useAuthState(auth);
-    const [products, setProducts] = useState({})
+    const [products, setProducts] = useState([])
     const [amount, setAmount] = useState(null)
 
     // const getamount = e => {
@@ -20,10 +20,12 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/tools/${toolsID}`)
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [products, setProducts])
+        if (products) {
+            fetch(`http://localhost:4000/tools/${toolsID}`)
+                .then(res => res.json())
+                .then(data => setProducts(data))
+        }
+    }, [products])
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     // const handleAmount = e => {
