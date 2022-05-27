@@ -24,6 +24,9 @@ const Header = () => {
 
                             <li><Link to="/purchase">Purchase</Link></li>
                             <li><Link to="/review">Review</Link></li>
+                            {
+                                user && <li><Link to="/dashboard">Dashboard</Link></li>
+                            }
 
                             {
                                 user ? <li><Link onClick={Handlesignout} to="/">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
@@ -53,19 +56,23 @@ const Header = () => {
 
                         <li><Link to="/purchase">Purchase</Link></li>
                         <li><Link to="/review">Review</Link></li>
+
                         {
-                            user ? <li><Link onClick={Handlesignout} className="mr-16" to="/">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
+                            user && <li><Link to="/dashboard">Dashboard</Link></li>
+                        }
+                        {
+                            user ? <li><Link onClick={Handlesignout} className="mr-64" to="/">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
                         }
 
                         {
-                            user ? <li><Link className='font-extrabold text-red-700' to="/">{user.displayName}</Link></li> : <li><Link to="/"></Link></li>
+                            user ? <li><Link className='font-bold text-red-700 mr-2 whitespace-nowrap' to="/">{user.displayName}</Link></li> : <li><Link to="/"></Link></li>
                         }
 
                         {
                             user ?
                                 <div class="avatar placeholder">
-                                    <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
-                                        <img src={user.photoURL} width="50px" alt="" />
+                                    <div class="bg-neutral-focus text-neutral-content rounded-full w-14">
+                                        <img src={user.photoURL} width="30px" alt="" />
                                     </div>
                                 </div> : <li><Link to="/"></Link></li>
                         }

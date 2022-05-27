@@ -28,7 +28,9 @@ function App() {
         <Route path='/tools/:toolsID' element={<Toolsdetails></Toolsdetails>}></Route>
         <Route path='/purchase/:toolsID' element={<Requireauth><Purchase></Purchase></Requireauth>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
-        <Route path='/dashboard' element={<Requireauth><Dashboard></Dashboard></Requireauth>}></Route>
+        <Route path='/dashboard' element={<Requireauth><Dashboard></Dashboard></Requireauth>}>
+          <Route></Route>
+        </Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
       <ToastContainer />
