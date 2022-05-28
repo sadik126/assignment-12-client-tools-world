@@ -25,6 +25,7 @@ import Manageproducts from './Components/Manageproducts/Manageproducts';
 import Addproducts from './Components/Addproducts/Addproducts';
 import Blogs from './Components/Blogs/Blogs';
 import Portfolio from './Components/Portfolio/Portfolio';
+import Notfound from './Components/Notfound/Notfound';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path='payment/:toolsID' element={<Makepayment></Makepayment>}></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
       <ToastContainer />
       <Footer></Footer>

@@ -6,7 +6,7 @@ const Toolsdetails = () => {
     const [products, setProducts] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:4000/tools/${toolsID}`)
+        fetch(`https://calm-taiga-28787.herokuapp.com/tools/${toolsID}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])

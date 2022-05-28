@@ -31,7 +31,7 @@ const Addproducts = () => {
                         img: img
                     }
 
-                    fetch('http://localhost:4000/tools', {
+                    fetch('https://calm-taiga-28787.herokuapp.com/tools', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -57,7 +57,7 @@ const Addproducts = () => {
         // setAmount(data)
         // console.log(data.amount)
         // const totalamount = data.amount;
-        // await fetch('http://localhost:4000/booking', {
+        // await fetch('https://calm-taiga-28787.herokuapp.com/booking', {
         //     method: 'POST',
         //     headers: {
         //         'content-type': 'application/json'

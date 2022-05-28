@@ -9,7 +9,7 @@ const Myorders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:4000/booking?email=${user.email}`)
+            fetch(`https://calm-taiga-28787.herokuapp.com/booking?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => setOrders(data))
             console.log(user.email)
@@ -20,7 +20,7 @@ const Myorders = () => {
     const handledelete = (id) => {
         const proceed = window.confirm('are you sure?')
         if (proceed) {
-            const url = `http://localhost:4000/bookings/${id}`
+            const url = `https://calm-taiga-28787.herokuapp.com/bookings/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

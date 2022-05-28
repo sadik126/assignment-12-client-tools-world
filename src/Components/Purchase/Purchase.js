@@ -21,7 +21,7 @@ const Purchase = () => {
 
     useEffect(() => {
         if (products) {
-            fetch(`http://localhost:4000/tools/${toolsID}`)
+            fetch(`https://calm-taiga-28787.herokuapp.com/tools/${toolsID}`)
                 .then(res => res.json())
                 .then(data => setProducts(data))
         }
@@ -39,7 +39,7 @@ const Purchase = () => {
         // setAmount(data)
         // console.log(data.amount)
         // const totalamount = data.amount;
-        await fetch('http://localhost:4000/booking', {
+        await fetch('https://calm-taiga-28787.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

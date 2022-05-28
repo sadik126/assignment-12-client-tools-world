@@ -20,7 +20,7 @@ const CheckoutForm = ({ payment }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/create-payment-intent`, {
+        fetch(`https://calm-taiga-28787.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -91,7 +91,7 @@ const CheckoutForm = ({ payment }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`http://localhost:4000/bookings/${_id}`, {
+            fetch(`https://calm-taiga-28787.herokuapp.com/bookings/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

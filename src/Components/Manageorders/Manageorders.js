@@ -4,7 +4,7 @@ const Manageorders = () => {
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/bookings')
+        fetch('https://calm-taiga-28787.herokuapp.com/bookings')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -13,7 +13,7 @@ const Manageorders = () => {
     const handledelete = (id) => {
         const proceed = window.confirm('are you sure?')
         if (proceed) {
-            const url = `http://localhost:4000/bookings/${id}`
+            const url = `https://calm-taiga-28787.herokuapp.com/bookings/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

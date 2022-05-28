@@ -8,7 +8,7 @@ import Selectadmin from './Selectadmin';
 
 
 const Allusers = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:4000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://calm-taiga-28787.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accesstoken')}`

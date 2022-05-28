@@ -4,7 +4,7 @@ const Manageproducts = () => {
     const [tools, setTools] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/tools')
+        fetch('https://calm-taiga-28787.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => setTools(data))
     }, [])
@@ -12,7 +12,7 @@ const Manageproducts = () => {
     const handledelete = (id) => {
         const proceed = window.confirm('are you sure?')
         if (proceed) {
-            const url = `http://localhost:4000/tools/${id}`
+            const url = `https://calm-taiga-28787.herokuapp.com/tools/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

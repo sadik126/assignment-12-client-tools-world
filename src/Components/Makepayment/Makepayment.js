@@ -11,7 +11,7 @@ const Makepayment = () => {
     const stripePromise = loadStripe('pk_test_51L4KKASJGWFrRQt8wPF6JUjMkUIrrrRXjeMh0bk7GMs8HvjfPS5VwCFNg53uzPnR1B4QpWHCQJIp6X9i8PSD8HD100Y3GFFVFn');
     const { toolsID } = useParams();
 
-    const url = `http://localhost:4000/booking/${toolsID}`;
+    const url = `https://calm-taiga-28787.herokuapp.com/booking/${toolsID}`;
 
     const { data: payment, isLoading } = useQuery(['booking', toolsID], () => fetch(url, {
         method: 'GET',
