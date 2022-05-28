@@ -7,6 +7,7 @@ import Useadmin from '../hooks/Useadmin';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = Useadmin(user)
+    console.log(admin, user)
     return (
         <div className='h-screen'>
             <div class="drawer drawer-mobile">
@@ -21,24 +22,41 @@ const Dashboard = () => {
                 <div class="drawer-side">
                     <label for="my-drawer-2" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+
+
+
+
+                        <li><Link to="/dashboard">Myorders</Link></li>
+
+
+                        {admin === false && <li><Link to="/dashboard/review">Add a review</Link></li>}
+
+
+
+
+                        <li><Link to="/dashboard/profile"> My Profile</Link></li>
+
+
+
+
+
                         {
-                            user && <li><Link to="/dashboard">Myorders</Link></li>
+                            admin && <li><Link to="/dashboard/users"> Make admin</Link></li>
                         }
 
                         {
-                            user && <li><Link to="/dashboard/review">Add a review</Link></li>
+                            admin && <li><Link to="/dashboard/manageorders"> Manage all orders</Link></li>
                         }
 
                         {
-                            user && <li><Link to="/dashboard/profile"> My Profile</Link></li>
+                            admin && <li><Link to="/dashboard/manageproducts"> Manage all products</Link></li>
                         }
-
-
-
 
                         {
-                            admin && <li><Link to="/dashboard/users"> All users</Link></li>
+                            admin && <li><Link to="/dashboard/addproducts"> Add product</Link></li>
                         }
+
+
 
                     </ul>
 

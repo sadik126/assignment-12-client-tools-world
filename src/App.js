@@ -20,6 +20,11 @@ import Profile from './Components/Profile/Profile';
 
 import Allusers from './Components/Users/Allusers';
 import Makepayment from './Components/Makepayment/Makepayment';
+import Manageorders from './Components/Manageorders/Manageorders';
+import Manageproducts from './Components/Manageproducts/Manageproducts';
+import Addproducts from './Components/Addproducts/Addproducts';
+import Blogs from './Components/Blogs/Blogs';
+import Portfolio from './Components/Portfolio/Portfolio';
 
 function App() {
   return (
@@ -30,6 +35,8 @@ function App() {
         {/* <Route path='/purchase' element={<Purchase></Purchase>}></Route> */}
         <Route path='/review' element={<Review></Review>}></Route>
         <Route path='/tools' element={<Tools></Tools>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/tools/:toolsID' element={<Toolsdetails></Toolsdetails>}></Route>
         <Route path='/purchase/:toolsID' element={<Requireauth><Purchase></Purchase></Requireauth>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
@@ -38,6 +45,9 @@ function App() {
           <Route path='review' element={<Review></Review>}></Route>
           <Route path='profile' element={<Profile></Profile>}></Route>
           <Route path='users' element={<Allusers></Allusers>}></Route>
+          <Route path='manageorders' element={<Manageorders></Manageorders>}></Route>
+          <Route path='manageproducts' element={<Manageproducts></Manageproducts>}></Route>
+          <Route path='addproducts' element={<Addproducts></Addproducts>}></Route>
           <Route path='payment/:toolsID' element={<Makepayment></Makepayment>}></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>

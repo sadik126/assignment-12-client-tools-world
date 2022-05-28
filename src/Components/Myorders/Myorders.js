@@ -9,9 +9,10 @@ const Myorders = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:4000/bookings?email=${user.email}`)
+            fetch(`http://localhost:4000/booking?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => setOrders(data))
+            console.log(user.email)
         }
 
     }, [user])

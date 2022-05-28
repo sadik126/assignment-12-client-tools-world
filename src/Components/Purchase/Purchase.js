@@ -74,7 +74,7 @@ const Purchase = () => {
 
 
                 <div className="card-body items-center text-center">
-                    <h2 className="text-center text-2xl font-extrabold text-white">Please Login here</h2>
+                    <h2 className="text-center text-2xl font-extrabold text-white">Please fill this</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="form-control w-full max-w-xs">
 

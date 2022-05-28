@@ -6,13 +6,16 @@ const CheckoutForm = ({ payment }) => {
     const stripe = useStripe()
     const element = useElements()
 
-    const { price, amount } = payment
+    const { _id, price, amount, name, email } = payment
 
     const total = price * amount;
     console.log(total)
 
     const [carderror, setCarderror] = useState('')
+    const [success, setSuccess] = useState('')
     const [clientSecret, setclientSecret] = useState('')
+    const [processing, setProcessing] = useState(false)
+    const [transitionId, settransitionId] = useState('')
     console.log(clientSecret)
 
 
@@ -54,6 +57,53 @@ const CheckoutForm = ({ payment }) => {
             setCarderror(error.message)
         } else {
             setCarderror('');
+            setSuccess('')
+            setProcessing(true)
+        }
+
+
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: name,
+                        email: email,
+                    },
+                },
+            },
+        );
+
+        if (intentError) {
+            setCarderror(intentError?.message)
+            setProcessing(false)
+
+        }
+        else {
+            setCarderror('')
+            settransitionId(paymentIntent.id)
+            console.log(paymentIntent)
+            setSuccess('your payment is completed')
+
+            const payment = {
+                product: _id,
+                transactionId: paymentIntent.id
+            }
+
+            fetch(`http://localhost:4000/bookings/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accesstoken')}`
+                },
+                body: JSON.stringify({ payment })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setProcessing(false)
+                    console.log(data)
+                })
         }
     }
 
@@ -83,6 +133,14 @@ const CheckoutForm = ({ payment }) => {
             </form>
             {
                 carderror && <p className='text-red-600'>{carderror}</p>
+            }
+
+            {
+                success && <div className='text-green-600'>
+
+                    <p> {success}</p>
+                    <p> Your transitionId is : {transitionId}</p>
+                </div>
             }
         </>
     );

@@ -18,13 +18,17 @@ const Home = () => {
 
             <h2 className='text-3xl text-center uppercase font-mono mt-9'>Our <span className='text-primary'>products</span> </h2>
 
-            <div className="container">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    {
-                        tools.slice(0, 3).map(tool => <Tool key={tool._id} tool={tool}></Tool>)
-                    }
+            <div className="container mx-auto">
+                <div className="row flex">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                        {
+                            tools.slice(0, 3).map(tool => <Tool key={tool._id} tool={tool}></Tool>)
+                        }
+
+                    </div>
 
                 </div>
+
             </div>
             <h2 className='text-3xl text-center uppercase font-mono mt-16'>The <span className='text-primary'>Bussiness summary</span> </h2>
             <Bussiness></Bussiness>
