@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Myorders = () => {
@@ -14,6 +15,25 @@ const Myorders = () => {
         }
 
     }, [user])
+
+    const handledelete = (id) => {
+        const proceed = window.confirm('are you sure?')
+        if (proceed) {
+            const url = `http://localhost:4000/bookings/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = orders.filter(order => order._id !== id)
+                    setOrders(remaining)
+                    console.log(data)
+                })
+
+        }
+
+    }
     return (
         <div class="overflow-x-auto">
             <table class="table w-full">
@@ -41,6 +61,13 @@ const Myorders = () => {
                             <td>{o.price} BDT</td>
                             <td>{o.amount}</td>
                             <td>{o.amount * o.price} BDT</td>
+                            <td><button onClick={() => handledelete(o._id)} class="btn btn-xs btn-error">Delete</button></td>
+                            <td>
+                                {(o.price && !o.paid) && <button class="btn btn-xs btn-success"> <Link to={`/dashboard/payment/${o._id}`}>make payment</Link> </button>}
+
+                                {(o.price && o.paid) && <span class=" btn-success"> paid</span>}
+
+                            </td>
                         </tr>)
                     }
 

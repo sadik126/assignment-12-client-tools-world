@@ -8,7 +8,12 @@ import Selectadmin from './Selectadmin';
 
 
 const Allusers = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:4000/user').then(res => res.json()));
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:4000/user', {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accesstoken')}`
+        }
+    }).then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }

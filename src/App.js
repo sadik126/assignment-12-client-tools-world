@@ -19,6 +19,7 @@ import Myorders from './Components/Myorders/Myorders';
 import Profile from './Components/Profile/Profile';
 
 import Allusers from './Components/Users/Allusers';
+import Makepayment from './Components/Makepayment/Makepayment';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path='review' element={<Review></Review>}></Route>
           <Route path='profile' element={<Profile></Profile>}></Route>
           <Route path='users' element={<Allusers></Allusers>}></Route>
+          <Route path='payment/:toolsID' element={<Makepayment></Makepayment>}></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
