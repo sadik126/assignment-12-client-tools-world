@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
 import Bussiness from '../Bussiness/Bussiness';
+import Contact from '../Contact/Contact';
+import Display from '../Display/Display';
 import Tool from '../Tools/Tool';
+
 
 
 const Home = () => {
@@ -32,6 +35,8 @@ const Home = () => {
             </div>
             <h2 className='text-3xl text-center uppercase font-mono mt-16'>The <span className='text-primary'>Bussiness summary</span> </h2>
             <Bussiness></Bussiness>
+            <Display></Display>
+            <Contact></Contact>
 
         </div>
     );

@@ -12,14 +12,14 @@ const Manageproducts = () => {
     const handledelete = (id) => {
         const proceed = window.confirm('are you sure?')
         if (proceed) {
-            const url = `http://localhost:4000/bookings/${id}`
+            const url = `http://localhost:4000/tools/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
 
                 .then(res => res.json())
                 .then(data => {
-                    const remaining = tools.filter(order => order._id !== id)
+                    const remaining = tools.filter(tool => tool._id !== id)
                     setTools(remaining)
                     console.log(data)
                 })
