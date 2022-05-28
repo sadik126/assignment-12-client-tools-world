@@ -32,8 +32,8 @@ const Myorders = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(o => <tr>
-                            <th>1</th>
+                        orders.map((o, index) => <tr>
+                            <th>{index + 1}</th>
                             <td>{o.name}</td>
                             <td>{o.email}</td>
                             <td>{o.product}</td>
@@ -44,12 +44,7 @@ const Myorders = () => {
                         </tr>)
                     }
 
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
+
 
 
                 </tbody>
